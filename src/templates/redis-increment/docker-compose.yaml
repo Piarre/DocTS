@@ -1,0 +1,21 @@
+version: '3'
+services:
+  learn:
+    image: redisincrement:latest
+    depends_on:
+      - redis
+    ports: 
+      - "80:80"
+    networks:
+      - net
+    environment:
+    - NOM=Pierre
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+    - net
+networks:
+  net:

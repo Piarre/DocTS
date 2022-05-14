@@ -1,0 +1,9 @@
+# Version of the docker-compose
+version: '3'
+services:
+  didockerize:
+    image: didockerize:latest
+    environment:
+      - TOKEN=BOT_TOKEN
+      - SERVERID=SERVER_ID
+      - PREFIX=!
