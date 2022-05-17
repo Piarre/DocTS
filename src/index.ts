@@ -22,6 +22,11 @@ const utils = new Utils();
             name: "Redis Container",
             hint: "Increment a counter in a Redis database.",
           },
+          {
+            message: "Spring Boot Backend with MySQL 8",
+            name: "Spring Boot MySQL",
+            hint: "Start a open-jdk container with Spring Boot and MySQL 8.",
+          },
         ],
       }
     ]);
@@ -36,6 +41,7 @@ const utils = new Utils();
 
     if (project.command === "Dockerize DiscordJS") utils.createProject(projectName.name, "Discord");
     if (project.command === "Redis Container") utils.createProject(projectName.name, "redis-increment");
+    if (project.command === "Spring Boot MySQL") utils.createProject(projectName.name, "SpringBoot");
 
   } catch (e) {
     console.warn(e);
