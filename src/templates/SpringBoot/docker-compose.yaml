@@ -1,0 +1,30 @@
+version: '3'
+services:
+  spring:
+    image: springboot:latest
+    container_name: spring-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/database
+      # ! use parameters between quotes for UTC TimeZone "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "root"
+    ports:
+    - "8080:8080"
+    depends_on:
+      - mysqldb:
+        condition: service_healthy
+    networks:
+      - spring
+    
+  mysqldb:
+    image: mysql:8
+    container_name: mysqldb
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=database
+    networks: 
+      - spring
+
+networks:
+  spring:
