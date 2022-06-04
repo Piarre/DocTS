@@ -5,7 +5,7 @@ const utils = new Utils();
 
 (async () => {
   try {
-    const project = await prompt<{ command: string }> ([
+    const project = await prompt<{ command: string }>([
       {
         type: "select",
         name: "command",
@@ -28,21 +28,23 @@ const utils = new Utils();
             hint: "Start a open-jdk container with Spring Boot and MySQL 8.",
           },
         ],
-      }
+      },
     ]);
     const projectName = await prompt<{ name: string }>([
       {
         type: "input",
         name: "name",
         message: "Enter the project name",
-        required: false
-      }
+        required: false,
+      },
     ]);
 
-    if (project.command === "Dockerize DiscordJS") utils.createProject(projectName.name, "Discord");
-    if (project.command === "Redis Container") utils.createProject(projectName.name, "redis-increment");
-    if (project.command === "Spring Boot MySQL") utils.createProject(projectName.name, "SpringBoot");
-
+    if (project.command === "Dockerize DiscordJS")
+      utils.createProject(projectName.name, "Discord");
+    if (project.command === "Redis Container")
+      utils.createProject(projectName.name, "redis-increment");
+    if (project.command === "Spring Boot MySQL")
+      utils.createProject(projectName.name, "SpringBoot");
   } catch (e) {
     console.warn(e);
   }
